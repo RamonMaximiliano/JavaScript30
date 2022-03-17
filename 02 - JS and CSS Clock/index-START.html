@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS + CSS Clock</title>
 </head>
+
 <body>
+  <div class="colors">
+    <h1 class="hours" style="color:rgb(133, 1, 1)">Hours</h1>
+    <h1 class="minutes" style="color:rgb(13, 136, 13)">Minutes</h1>
+    <h1 class="seconds" style="color:yellow">Seconds</h1>
+  </div>
 
 
-    <div class="clock">
-      <div class="clock-face">
-        <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
-      </div>
+  <div class="clock">
+    <div class="clock-face">
+      <div class="hand hour-hand"></div>
+      <div class="hand min-hand"></div>
+      <div class="hand second-hand"></div>
     </div>
+  </div>
 
 
   <style>
@@ -43,17 +50,18 @@
       position: relative;
       padding: 2rem;
       box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
+        0 0 0 4px rgba(0, 0, 0, 0.1),
         inset 0 0 0 3px #EFEFEF,
         inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
+        0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .clock-face {
       position: relative;
       width: 100%;
       height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
+      transform: translateY(-3px);
+      /* account for the height of the clock hands */
     }
 
     .hand {
@@ -62,51 +70,75 @@
       background: black;
       position: absolute;
       top: 50%;
-      transform-origin:100%;
+      transform-origin: 100%;
     }
 
-
-    .hour-hand{
-      /*makes the pointer turn*/
-      transform: rotate(90deg)
+    .colors {
+      background-color: black;
+      border-radius: 20%;
+      width: 180px;
+      margin-left: 42%;
+      margin-top: -800px;
+      position: absolute;
+      text-align: center;
+      align-items: center;
     }
+
+    .hour-hand {
+      background: rgb(133, 1, 1);
+    }
+
     .min-hand {
-      /*makes the pointer turn*/
-      transform: rotate(150deg);
+      background: rgb(13, 136, 13);
     }
 
     .second-hand {
-      /*makes the pointer turn*/
-      transform: rotate(210deg)
+      background: yellow;
     }
-
   </style>
-
   <script>
 
-    let date = new Date()
 
-    console.log(date)
-    console.log(date.getHours())
-    console.log(date.getMinutes())
-    console.log(date.getSeconds())
+    function showTime() {
+      let date = new Date()
 
-//30deg represents 1 hour
+      let hour = document.querySelector(".hour-hand")
+      hour.style.transform = `rotate(${((date.getHours() / 24) * 360) + 90}deg)`
 
-/*
+      let min = document.querySelector(".min-hand")
+      min.style.transform = `rotate(${((date.getMinutes() / 60) * 360) + 90}deg)`
 
-0 = 90
-1 = 120
-2 = 150
-3 = 180
-4 = 210
-5 = 240
-6 = 270
-7 = 300
+      let sec = document.querySelector(".second-hand")
+      sec.style.transform = `rotate(${((date.getSeconds() / 60) * 360) + 90}deg)`
+    }
 
+    setInterval(showTime, 1000)
 
-*/ 
+    /*
+    
+    MATH:
+    
+    MINUTES:
+    60 minutes is a full rotation
+    A full rotation is 360 degrees
+    Any fraction of 60 minutes is a fraction of 360 degrees
+    Example: 23 min is (23/60)*360 degrees
+    
+    HOURS:
+    24 hours is a full rotation
+    A full rotation is 360 degrees
+    Any fraction of 24 hours is a fraction of 360 degrees
+    Example: 10 hour is (10/24)*360 degrees
+    
+    SECONDS:
+    60 seconds is a full rotation
+    A full rotation is 360 degrees
+    Any fraction of 60 seconds is a fraction of 360 degrees
+    Example: 10 seconds is (10/60)*360 degrees
+    
+    */
 
-</script>
+  </script>
 </body>
+
 </html>
