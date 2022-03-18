@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Array Cardio 💪</title>
 </head>
+
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+
+  <h3 class="filterEx">Array.prototype.filter()</h3>
+  <h4>1. Filter the list of inventors for those who were born in the 1500's</h4>
+  <p class="filterExresult">This is the result</p>
+  <input type="button" value="Check" onclick="filterEx()">
   <script>
     // Get your shorts on - this is an array workout!
     // ## Array Cardio Day 1
@@ -34,9 +41,26 @@
       'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
-    
-    // Array.prototype.filter()
-    // 1. Filter the list of inventors for those who were born in the 1500's
+
+
+
+
+    function filterEx() {
+      // Array.prototype.filter()
+      // 1. Filter the list of inventors for those who were born in the 1500's
+      const filterResult = inventors.filter(function (person) {
+        return person.year < 1600 && person.year > 1500
+      })
+      let endfilterResult = `Name: ${filterResult[0].first} - Year: ${filterResult[0].year} <br> Name: ${filterResult[1].first} - Year: ${filterResult[1].year} `
+      document.querySelector(".filterExresult").innerHTML = endfilterResult
+      /*        document.querySelector(".filterExresult").innerHTML = JSON.stringify(filterResult)
+       */
+
+    }
+
+
+
+
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
@@ -58,8 +82,9 @@
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
   </script>
 </body>
+
 </html>
