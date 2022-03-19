@@ -28,6 +28,13 @@
 
   <hr>
 
+  <h3 class="sortEx">Array.prototype.sort()</h3>
+  <h4>3. Sort the inventors by birthdate, oldest to youngest</h4>
+  <p class="sortExresult">This is the result</p>
+  <input type="button" value="Check" onclick="sortEx()">
+
+  <hr>
+
   <script>
     const inventors = [
       { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
@@ -52,7 +59,6 @@
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
 
-
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
     function filterEx() {
@@ -67,21 +73,27 @@
        */
     }
 
-
-
     // Array.prototype.map()
     // 2. Give us an array of the inventor first and last names
     function mapEx() {
       let mapResult = inventors.map(function (invent) {
-        return ` ${invent.first} ${invent.last} `
+        return ` ${invent.first} ${invent.last} <br> `
       })
       document.querySelector(".mapExresult").innerHTML = mapResult
-      console.log(mapResult)
     }
-
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    function sortEx() {
+      let sortResult = inventors.sort(function (a, b) {
+        return a.year - b.year
+      })
+      let endresultArray = []
+      for (x = 0; x < sortResult.length; x++) {
+        endresultArray.push(` ${sortResult[x].first} ${sortResult[x].last} <strong>${sortResult[x].year}</strong> <br> `)
+      }
+      document.querySelector(".sortExresult").innerHTML = endresultArray
+    }
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
