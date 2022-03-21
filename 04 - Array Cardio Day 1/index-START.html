@@ -35,6 +35,14 @@
 
   <hr>
 
+  <h3 class="reduceEx">Array.prototype.reduce()</h3>
+  <h4>4. How many years did all the inventors live all together?</h4>
+  <p class="reduceExresult">This is the result</p>
+  <input type="button" value="Check" onclick="activateReduce()">
+
+  <hr>
+
+
   <script>
     const inventors = [
       { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
@@ -97,6 +105,16 @@
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    function activateReduce(){
+    document.querySelector(".reduceExresult").innerHTML = inventors.reduce(reduceEx, 0)
+    function reduceEx(total, investor){
+      return total + investor.passed - investor.year;
+      }
+    }
+
+
+
+
 
     // 5. Sort the inventors by years lived
 
