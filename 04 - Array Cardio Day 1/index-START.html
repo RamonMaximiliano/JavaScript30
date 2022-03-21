@@ -42,6 +42,13 @@
 
   <hr>
 
+  <h3 class="sort2Ex">Sort the inventors by years lived</h3>
+  <h4>5. Sort the inventors by years lived</h4>
+  <p class="sort2Exresult">This is the result</p>
+  <input type="button" value="Check" onclick="sort2Ex()">
+
+  <hr>
+
 
   <script>
     const inventors = [
@@ -112,11 +119,20 @@
       }
     }
 
-
-
-
-
     // 5. Sort the inventors by years lived
+
+    function sort2Ex(){
+      let yearsLived = inventors.map(function (inventor){
+        return `${inventor.passed - inventor.year} years lived: ${inventor.first} ${inventor.last} <br>` 
+      })
+      console.log(yearsLived)
+      console.log(yearsLived.sort())
+      document.querySelector(".sort2Exresult").innerHTML = yearsLived.sort()
+  }
+
+
+
+  
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
