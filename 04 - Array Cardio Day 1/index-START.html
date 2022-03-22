@@ -49,6 +49,20 @@
 
   <hr>
 
+  <h3 class="lastEx">Sort the people alphabetically by last name</h3>
+  <h4>7. sort Exercise</h4>
+  <p class="lastExresult">This is the result</p>
+  <input type="button" value="Check" onclick="lastEx()">
+
+  <hr>
+
+  <h3 class="sumUplastEx">Sum up the instances of each of these</h3>
+  <h4>8. Reduce Exercise</h4>
+  <p class="sumUpExresult">This is the result</p>
+  <input type="button" value="Check" onclick="sumUpEx()">
+
+  <hr>
+
 
   <script>
     const inventors = [
@@ -112,38 +126,96 @@
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-    function activateReduce(){
-    document.querySelector(".reduceExresult").innerHTML = inventors.reduce(reduceEx, 0)
-    function reduceEx(total, investor){
-      return total + investor.passed - investor.year;
+    function activateReduce() {
+      document.querySelector(".reduceExresult").innerHTML = inventors.reduce(reduceEx, 0)
+      function reduceEx(total, investor) {
+        return total + investor.passed - investor.year
       }
     }
 
     // 5. Sort the inventors by years lived
 
-    function sort2Ex(){
-      let yearsLived = inventors.map(function (inventor){
-        return `${inventor.passed - inventor.year} years lived: ${inventor.first} ${inventor.last} <br>` 
+    function sort2Ex() {
+      let yearsLived = inventors.map(function (inventor) {
+        return `${inventor.passed - inventor.year} years lived: ${inventor.first} ${inventor.last} <br>`
       })
       console.log(yearsLived)
       console.log(yearsLived.sort())
       document.querySelector(".sort2Exresult").innerHTML = yearsLived.sort()
-  }
-
-
-
-  
-
-    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    }
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    function lastEx() {
+      let lastSort = people.sort()
+      let lastSortArray = []
+      lastSort.forEach(organize)
+
+      function organize(name) {
+        name += ' <br>'
+        lastSortArray.push(name)
+        console.log(name)
+      }
+      document.querySelector(".lastExresult").innerHTML = lastSortArray
+    }
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+    function sumUpEx() {
+      let vehiclesArray = []
+
+      //CAR
+      let car = data.reduce(reduceCar, 0)
+      function reduceCar(carTotal, item) {
+        if (item == 'car') {
+          carTotal += 1
+        }
+        return carTotal
+      }
+      vehiclesArray.push(`car: ${car} <br>`)
+
+      //TRUCK
+      let truck = data.reduce(reduceTruck, 0)
+      function reduceTruck(truckTotal, item) {
+        if (item == 'truck') {
+          truckTotal += 1
+        }
+        return truckTotal
+      }
+      vehiclesArray.push(`truck: ${truck} <br>`)
+
+      //BIKE
+      let bike = data.reduce(reduceBike, 0)
+      function reduceBike(bikeTotal, item) {
+        if (item == 'bike') {
+          bikeTotal += 1
+        }
+        return bikeTotal
+      }
+      vehiclesArray.push(`bike: ${bike} <br>`)
+
+      //WALK
+      let walk = data.reduce(reduceWalk, 0)
+      function reduceWalk(walkTotal, item) {
+        if (item == 'walk') {
+          walkTotal += 1
+        }
+        return walkTotal
+      }
+      vehiclesArray.push(`walk: ${walk} <br>`)
+
+      //VAN
+      let van = data.reduce(reduceVan, 0)
+      function reduceVan(vanTotal, item) {
+        if (item == 'van') {
+          vanTotal += 1
+        }
+        return vanTotal
+      }
+      vehiclesArray.push(`van: ${van} <br>`)
+      document.querySelector(".sumUpExresult").innerHTML = vehiclesArray
+    }
 
   </script>
 </body>
