@@ -10,16 +10,15 @@
 <body>
 
   <form class="search-form">
-    <input type="text" class="search" placeholder="City or State" id="search-form">
+    <input type="text" class="search" placeholder="Search for a City" id="search-form">
     <ul class="suggestions" id="suggestions">
-      <li>Filter for a city</li>
-      <li>or a state</li>
+      <li>if the city is in the list, it will be added</li>
     </ul>
   </form>
   <script>
 
 
-async function searchCity() {
+    async function searchCity() {
       const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
       //fez o fetch dos dados
@@ -38,38 +37,39 @@ async function searchCity() {
           console.log(liArray)
           let citiesArray = []
 
-          for(y=0;y<liArray.length;y++){
+          for (y = 0; y < liArray.length; y++) {
             citiesArray.push(liArray[y].innerHTML.toUpperCase())
-          } 
+          }
           console.log(typed)
           console.log(citiesArray)
           console.log(citiesArray.includes(typed))
 
 
-              if (citiesArray.includes(typed) == false) {
-              for (x = 0; x < cities.length; x++) {
-                let endCity = cities[x].city.toUpperCase()
-                if (typed == endCity) {
-                  let node = document.createElement("li");
-                  const textnode = document.createTextNode(`${cities[x].city}`);
-                  node.appendChild(textnode);
-                  document.getElementById("suggestions").appendChild(node);
-               } }
-
-          
-        } else {
-              window.alert("This city was already found!")
+          if (citiesArray.includes(typed) == false) {
+            for (x = 0; x < cities.length; x++) {
+              let endCity = cities[x].city.toUpperCase()
+              if (typed == endCity) {
+                let node = document.createElement("li");
+                const textnode = document.createTextNode(`${cities[x].city}`);
+                node.appendChild(textnode);
+                document.getElementById("suggestions").appendChild(node);
+              }
             }
-       })
 
-/*           //retorno em caso de não conseguir fazer o fetch
-          .catch(function () {
-            window.alert("Cities unavailable!")
-          }) */
 
-}
+          } else {
+            window.alert("This city was already found!")
+          }
+        })
 
-document.getElementById("search-form").addEventListener("input", searchCity)
+      /*           //retorno em caso de não conseguir fazer o fetch
+                .catch(function () {
+                  window.alert("Cities unavailable!")
+                }) */
+
+    }
+
+    document.getElementById("search-form").addEventListener("input", searchCity)
 
   </script>
 </body>
