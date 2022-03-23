@@ -2,10 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Array Cardio 💪💪</title>
+  <title>Array Cardio - 2 💪💪</title>
 </head>
 <body>
+  <style>
+    body {
+      background-color: rgb(184, 184, 184);
+    }
+  </style>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+
+
+  <h3 class="filterEx">Some and Every Checks</h3>
+  <h4>1. Array.prototype.some() // is at least one person 19 or older?</h4>
+  <p class="someExresult">This is the result</p>
+  <input type="button" value="Check" onclick="someEx()">
+
+  <hr>
+
+  <h3 class="filterEx">Some and Every Checks</h3>
+  <h4>2. Array.prototype.every() // is everyone 19 or older?</h4>
+  <p class="filterExresult">This is the result</p>
+  <input type="button" value="Check" >
+
+  <hr>
+
+  <h3 class="filterEx">Array.prototype.find()</h3>
+  <h4>3. Find is like filter, but instead returns just the one you are looking for</h4>
+  <p class="filterExresult">This is the result</p>
+  <input type="button" value="Check" >
+
+  <hr>
+  <h3 class="filterEx">Some and Every Checks</h3>
+  <h4>4. find the comment with the ID of 823423</h4>
+  <p class="filterExresult">This is the result</p>
+  <input type="button" value="Check" >
+
+  <hr>
+  <h3 class="filterEx">Array.prototype.findIndex()</h3>
+  <h4>5. Find the comment with this ID</h4>
+  <p class="filterExresult">This is the result</p>
+  <input type="button" value="Check" >
+
+  <hr>
+  <h3 class="filterEx">Array.prototype.findIndex()</h3>
+  <h4>6. delete the comment with the ID of 823423</h4>
+  <p class="filterExresult">This is the result</p>
+  <input type="button" value="Check" >
+
+  <hr>
+
+
   <script>
     // ## Array Cardio Day 2
 
@@ -24,17 +71,43 @@
       { text: 'Nice Nice Nice!', id: 542328 }
     ];
 
-    // Some and Every Checks
-    // Array.prototype.some() // is at least one person 19 or older?
-    // Array.prototype.every() // is everyone 19 or older?
 
+   // 1. Array.prototype.some() // is at least one person 19 or older?
+
+    function someEx(){
+      let personAge = people.some(function(person){
+        return person.year > 2003
+      })
+
+      let personAgeArray = people.filter(function(person){
+        return person.year > 2003
+      })
+
+      let personAgeSingle = []
+      for(x=0;x<personAgeArray.length;x++){
+        personAgeSingle.push(personAgeArray[x].name)
+      }
+
+      console.log(personAgeSingle)
+      document.querySelector(".someExresult").innerHTML = `the person <strong>${personAgeSingle[0]}</strong> is older than 19 = <strong>${personAge}</strong>`
+    }
+
+   // 2. Array.prototype.every() // is everyone 19 or older?
+
+
+
+
+
+
+   
+/* 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
-    // delete the comment with the ID of 823423
+    // delete the comment with the ID of 823423*/
 
   </script>
 </body>
