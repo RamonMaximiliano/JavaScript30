@@ -1,80 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Type Ahead 👀</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
+    <input type="text" class="search" placeholder="City or State" id="search-form">
     <ul class="suggestions" id="suggestions">
       <li>Filter for a city</li>
       <li>or a state</li>
     </ul>
   </form>
-<script>
+  <script>
 
 
-function searchCity(){ 
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+async function searchCity() {
+      const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
-//fez o fetch dos dados
+      //fez o fetch dos dados
 
-let cities = fetch(endpoint)
+      let cities = await fetch(endpoint)
 
-//Transformou em json
-.then(function (cities){
-  return cities.json();
-}
-)
+        //Transformou em json
+        .then(function (cities) {
+          return cities.json();
+        })
 
-//tem agora o json para ser utilizado
-.then(function (cities){
-   let typed = document.querySelector(".search").value.toUpperCase()
-   let liArray = document.querySelectorAll("li")
-   console.log(typed)
-   console.log(liArray)
+        //tem agora o json para ser utilizado
+        .then(function (cities) {
+          let typed = document.querySelector(".search").value.toUpperCase()
+          let liArray = document.querySelectorAll("li")
+          console.log(liArray)
+          let citiesArray = []
 
-
-
-   
-  for (y=0;y<liArray.length;y++){
-    console.log(liArray[y].innerHTML)
-    }
-  
+          for(y=0;y<liArray.length;y++){
+            citiesArray.push(liArray[y].innerHTML.toUpperCase())
+          } 
+          console.log(typed)
+          console.log(citiesArray)
+          console.log(citiesArray.includes(typed))
 
 
+              if (citiesArray.includes(typed) == false) {
+              for (x = 0; x < cities.length; x++) {
+                let endCity = cities[x].city.toUpperCase()
+                if (typed == endCity) {
+                  let node = document.createElement("li");
+                  const textnode = document.createTextNode(`${cities[x].city}`);
+                  node.appendChild(textnode);
+                  document.getElementById("suggestions").appendChild(node);
+               } }
 
-   for(x=0;x<cities.length;x++){
-    let endCity = cities[x].city.toUpperCase()
-    let endState = cities[x].state.toUpperCase()
-    if(typed == endCity){
-      let node = document.createElement("li");
-      const textnode = document.createTextNode(`${cities[x].city}`);
-      node.appendChild(textnode);
-      document.getElementById("suggestions").appendChild(node);
-    }
-    else if (typed == endState){
-      let nodeS = document.createElement("li");
-      const textnodeS = document.createTextNode(`${cities[x].state}`);
-      nodeS.appendChild(textnodeS);
-      document.getElementById("suggestions").appendChild(nodeS);
-    }
-  }  
-})
+          
+        } else {
+              window.alert("This city was already found!")
+            }
+       })
 
-//retorno em caso de não conseguir fazer o fetch
-.catch(function(){
-  window.alert("Cities unavailable!")
-})
+/*           //retorno em caso de não conseguir fazer o fetch
+          .catch(function () {
+            window.alert("Cities unavailable!")
+          }) */
 
 }
 
-/* setInterval(searchCity, 1000) */
+document.getElementById("search-form").addEventListener("input", searchCity)
 
-
-</script>
+  </script>
 </body>
+
 </html>
