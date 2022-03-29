@@ -58,7 +58,7 @@
   -->
   <div class="inbox">
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" >
       <p>This is an inbox layout.</p>
     </div>
     <div class="item">
@@ -70,7 +70,7 @@
       <p>Hold down your Shift key</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" >
       <p>Check a lower item</p>
     </div>
     <div class="item">
@@ -95,7 +95,42 @@
     </div>
   </div>
 
+  <div id="keyboard">Hello</div>
+
 <script>
+
+let itemsArray = document.querySelectorAll("input")
+console.log(itemsArray)
+
+
+
+
+
+
+//VALIDATION KEY DOWN
+ window.addEventListener("keydown", shiftHeld)
+ function shiftHeld(e){
+   console.log(e)
+    if(e.keyCode == 16){
+      document.getElementById("keyboard").setAttribute("class", "yes") 
+    }
+  }
+
+
+window.addEventListener("keyup", shiftLeave)
+ function shiftLeave(eUp){
+    if(eUp.keyCode == 16){
+      document.getElementById("keyboard").classList.remove("yes")
+    }
+  }    
+//VALIDATION KEY DOWN
+
+
+
+  /*
+document.querySelector(".item1").checked = true
+*/
+
 </script>
 </body>
 </html>
