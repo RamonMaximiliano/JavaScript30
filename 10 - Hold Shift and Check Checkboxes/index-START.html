@@ -58,39 +58,39 @@
   -->
   <div class="inbox">
     <div class="item">
-      <input type="checkbox" >
+      <input type="checkbox" id="item1">
       <p>This is an inbox layout.</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id="item2">
       <p>Check one item</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id="item3">
       <p>Hold down your Shift key</p>
     </div>
     <div class="item">
-      <input type="checkbox" >
+      <input type="checkbox" id="item4">
       <p>Check a lower item</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id="item5">
       <p>Everything in between should also be set to checked</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id="item6">
       <p>Try to do it without any libraries</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id="item7">
       <p>Just regular JavaScript</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id="item8">
       <p>Good Luck!</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id="item9">
       <p>Don't forget to tweet your result!</p>
     </div>
   </div>
@@ -99,23 +99,65 @@
 
 <script>
 
+let arrayItems = []
+let clickedITems = []
+
+//Getting list of possible checked items
 let itemsArray = document.querySelectorAll("input")
-console.log(itemsArray)
 
 
+//ARRAY DE IDS from the node list
+for (item of itemsArray){
+  arrayItems.push(item.id)
+}
 
+//EVENT LISTENER on each node
+for (event of itemsArray){
+  event.addEventListener("click",markItems)
+}
 
+//IDENTIFY WHICH WAS CLICKED 
+function  markItems(event){
+  if(clickedITems.length <=1){
+    clickedITems.push(event.target.id)
 
+    //Array of FIRST clicked vs LAST clicked
+    let endArray = arrayItems.filter(function(text){
+      return text >= clickedITems[0] && text <= clickedITems[1] 
+    })
+
+    //Array of LAST clicked vs FIRST clicked
+    let endArray2 = arrayItems.filter(function(text2){
+      return text2 <= clickedITems[0] && text2 >= clickedITems[1]
+    })
+
+    if(document.getElementById("keyboard").classList.contains("yes") == true){
+      for(todo of endArray){
+      document.getElementById(todo).checked = true
+      }
+          
+     for(todo2 of endArray2){
+      document.getElementById(todo2).checked = true
+      }
+ 
+    } else {
+      window.alert("You have to hold Shift!")
+      window.location.reload();
+    }  
+
+  } else {
+    window.alert("You already clicked 2 items")
+    window.location.reload();
+  }
+}
 
 //VALIDATION KEY DOWN
  window.addEventListener("keydown", shiftHeld)
  function shiftHeld(e){
-   console.log(e)
     if(e.keyCode == 16){
       document.getElementById("keyboard").setAttribute("class", "yes") 
     }
   }
-
 
 window.addEventListener("keyup", shiftLeave)
  function shiftLeave(eUp){
@@ -125,12 +167,10 @@ window.addEventListener("keyup", shiftLeave)
   }    
 //VALIDATION KEY DOWN
 
-
-
-  /*
-document.querySelector(".item1").checked = true
-*/
-
 </script>
 </body>
 </html>
+
+
+
+
