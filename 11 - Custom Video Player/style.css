@@ -104,6 +104,42 @@ body {
   flex-basis: 50%;
 }
 
+.progressBar100{
+  width: 50%;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 100%;
+}
+.progressBar25{
+  width: 50%;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 25%;
+}
+.progressBar50{
+  width: 50%;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 50%;
+}
+.progressBar75{
+  width: 50%;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 75%;
+}
+.progressBar0{
+  width: 50%;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 0%;
+}
+
+
+
+
+
+
 /* unholy css to style input type="range" */
 
 input[type=range] {
