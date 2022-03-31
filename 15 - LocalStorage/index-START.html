@@ -52,7 +52,8 @@
       let item = document.getElementById("itemTyped").value
       console.log(item)
 
-      let listItem = `<li><input type="checkbox" name="${item}" value="${item}" ><label for="${item}"><strong>${item}</strong></label></li>`
+      //O for do label precisa estar linkado ao ID do input type checkbox, para que quando clicado ele flaggue o mesmo
+      let listItem = `<li><input type="checkbox" name="${item}" value="${item}" id="${item}"><label for="${item}"><strong>${item}</strong></label></li>`
       items.push(listItem)
       console.log(items)
 
@@ -71,6 +72,13 @@
 
     window.onload = setList()
 
+
+
+
+    // Add a button to clear the list
+
+
+    
   </script>
 </body>
 
