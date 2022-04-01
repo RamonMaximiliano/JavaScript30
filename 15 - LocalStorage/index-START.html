@@ -40,6 +40,7 @@
       <input type="text" name="item" placeholder="Item Name" required id="itemTyped">
       <input type="submit" value="+ Add Item" onclick="addItem(); return false">
     </form>
+    <button class="newButton" onclick="cleanList()">Clean list</button>
   </div>
 
   <script>
@@ -70,6 +71,21 @@
       itemsList.innerHTML = window.localStorage.getItem("MyList")
     }
 
+
+    function cleanList() {
+      /*   -- When passed a key name, the removeItem() method removes that key from the storage if it exists. If there is no item associated with the given key, this method will do nothing.-- */
+      window.localStorage.removeItem('MyList');
+      /*       
+       --This method, when invoked, clears the entire storage of all records for that domain. It does not receive any parameters.--
+       window.localStorage.clear();
+      */
+      window.location.reload();
+
+    }
+
+
+
+
     window.onload = setList()
 
 
@@ -78,7 +94,7 @@
     // Add a button to clear the list
 
 
-    
+
   </script>
 </body>
 
