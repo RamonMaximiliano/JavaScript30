@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Videos</title>
 </head>
-<body>
+<body style="background-color:rgb(180, 180, 180)">
   <ul class="videos">
     <li data-time="5:43">
       Video 1
@@ -181,7 +181,88 @@
       Video 58
     </li>
   </ul>
+  <div class="result"><h1 class="title">Calculate the times of the videos above:</h1>
+    <h2 class="hours">Hours:</h2>
+    <p class="paraghours"></p>
+    <h2 class="Minutes">Minutes:</h2>
+    <p class="paragminutes"></p>
+    <h2 class="Seconds">Seconds:</h2>
+    <p class="paragSeconds"></p>
+    <h2 class="total">Total:</h2>
+    <p class="totalTotal"></p>
+  </div>
 <script>
+
+let timesArray = []
+let secondArray = []
+let minutes = []
+let seconds = []
+
+let timesList = document.querySelectorAll("li")
+
+/* [forEach] array.forEach(myFunction) - Calls a function for each element in an array*/
+timesList.forEach(addArray)
+function addArray(item){
+  timesArray.push(item.dataset.time)
+}
+
+for(item of timesArray){
+  secondArray.push(item.split(':'))
+} 
+
+for(item of secondArray){
+  minutes.push(item[0])
+  seconds.push(item[1])
+} 
+//Hours and seconds:
+console.log(minutes)
+console.log(seconds)
+
+
+//REDUCE TO GET TOTAL OF MINUTES
+let totalMinutes = minutes.reduce(minutesCalc, 0)
+function minutesCalc(minTotal, min){  
+  let minNumber = Number(min)
+  return minTotal + minNumber
+}
+console.log(totalMinutes)
+
+//REDUCE TO GET TOTAL OF SECONDS
+let totalSeconds = seconds.reduce(secondsCalc, 0)
+function secondsCalc(secTotal, sec){  
+  let secNumber = Number(sec)
+  return secTotal + secNumber
+}
+console.log(totalSeconds)
+
+console.log(totalMinutes*60+totalSeconds)
+
+console.log(`Seconds: ${totalMinutes*60+totalSeconds}`)
+console.log(`Minutes: ${(totalMinutes*60+totalSeconds)/60}`)
+console.log(`Minutes: ${Math.round((totalMinutes*60+totalSeconds)/60)}`)
+
+console.log(`Hours: ${(totalMinutes*60+totalSeconds)/3600}`)
+console.log(`Hours: ${Math.round((totalMinutes*60+totalSeconds)/3600)}`)
+
+document.querySelector(".paragSeconds").innerHTML = `This is the total in <strong>Seconds: ${totalMinutes*60+totalSeconds}</strong>`
+document.querySelector(".paragminutes").innerHTML = `This is the total in <strong>Minutes: ${Math.round((totalMinutes*60+totalSeconds)/60)}</strong>`
+document.querySelector(".paraghours").innerHTML = `This is the total in <strong>Hours: ${Math.round((totalMinutes*60+totalSeconds)/3600)}</strong>`
+
+
+//hours
+let finalHours = Math.floor((totalMinutes*60+totalSeconds)/3600)
+console.log(Math.floor((totalMinutes*60+totalSeconds)/3600))
+console.log((totalMinutes*60+totalSeconds)%3600)
+
+//Minutes
+let finalMinutes = Math.floor(((totalMinutes*60+totalSeconds)%3600)/60)
+console.log(Math.floor(((totalMinutes*60+totalSeconds)%3600)/60))
+
+//Seconds
+let finalSeconds = ((totalMinutes*60+totalSeconds)%3600)%60
+console.log(((totalMinutes*60+totalSeconds)%3600)%60)
+
+document.querySelector(".totalTotal").innerHTML = `This is the <strong>final total time: ${finalHours}:${finalMinutes}:${finalSeconds}</strong>`
 </script>
 </body>
 </html>
