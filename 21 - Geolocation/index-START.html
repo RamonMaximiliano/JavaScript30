@@ -59,6 +59,11 @@
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
   <script>
+    navigator.geolocation.watchPosition((Data) =>{
+    console.log(Data)
+})
+  const arrow = document.querySelector(".arrow")
+  arrow.style.transform = `rotate(${Data.coords.heading}deg)`
   </script>
 </body>
 </html>
