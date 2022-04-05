@@ -27,6 +27,32 @@
 
   <script>
     // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+
+    //Apply the hover white background effect to each Anchor tag
+
+    let newTag = document.createElement("span")
+
+
+    let array = document.querySelectorAll("a")
+    console.log(array)
+    for(item of array){
+      item.addEventListener("mouseover", changeBack)
+      item.addEventListener("mouseout", changeNormal)
+
+    } 
+
+    function changeBack(event){
+      console.log(event.target)
+      event.target.classList.add("highlight")
+    }
+
+
+    function changeNormal(event){
+      console.log(event.target)
+      event.target.classList.remove("highlight")
+    }
+
+
   </script>
 </body>
 </html>
