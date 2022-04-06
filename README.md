@@ -14,7 +14,7 @@ For some of the projects I decided to skip when realizing the learning opportuni
 
 ![My Image](javascript30.JPG)
 
-Portugês:
+Português:
 
 Famoso curso de 30 dias de pequenos projetos puro código JavaScript:
 
