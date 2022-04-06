@@ -1,6 +1,6 @@
 # JavaScript30
 
-English:
+##English:
 
 Famous 30 days small vanilla JavaScript projects course:
 
@@ -12,7 +12,7 @@ For most cases I was able to make myself, only watching the tutorial video later
 
 For some of the projects I decided to skip when realizing the learning opportunity was not intersting. 
 
-Português:
+##Português:
 
 Famoso curso de 30 dias de pequenos projetos puro código JavaScript:
 
