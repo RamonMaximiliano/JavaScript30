@@ -57,6 +57,8 @@ nav ul {
   display: flex;
 }
 
+
+
 nav li {
   flex: 1;
   text-align: center;
@@ -78,6 +80,16 @@ li.logo a {
   color: black;
 }
 
+li.logo {
+  transition: all .5s;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+li.logo a {
+  color: red;
+}
+
 nav a {
   text-decoration: none;
   padding: 20px;
@@ -86,3 +98,18 @@ nav a {
   transition: all 0.2s;
   text-transform: uppercase;
 }
+
+.main{
+position:fixed;
+transition: background-color 1s;
+background-color: black; 
+width:100%;
+}
+
+.showHidden{
+  position:fixed;
+  transition: background-color 1s;
+  background-color: red; 
+
+}
+

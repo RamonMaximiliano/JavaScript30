@@ -11,10 +11,10 @@
     <h1>A story about getting lost.</h1>
   </header>
 
-  <nav id="main">
+  <nav id="menu" class="main" onmouseover="showHidden()" onmouseout="hideHidden()">
     <ul>
-      <li class="logo"><a href="#">LOST.</a></li>
-      <li><a href="#">Home</a></li>
+      <li class="logo" id="logo"><a href="#">LOST.</a></li>
+      <li><a href="#" >Home</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Images</a></li>
       <li><a href="#">Locations</a></li>
@@ -57,8 +57,20 @@
 
 //make the nav fixed and scroll to the right
 
+function showHidden(){
+  document.getElementById("menu").classList.remove("main")
+  document.getElementById("menu").classList.add("showHidden")
+  document.getElementById("logo").classList.remove("logo")
+  document.getElementById("logo").classList.add("showlogo")
 
+}
 
+function hideHidden(){
+  document.getElementById("menu").classList.remove("showHidden")
+  document.getElementById("menu").classList.add("main")
+  document.getElementById("logo").classList.remove("showlogo")
+  document.getElementById("logo").classList.add("logo")
+}
 
 </script>
 
