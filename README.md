@@ -12,8 +12,6 @@ For most cases I was able to make myself, only watching the tutorial video later
 
 For some of the projects I decided to skip when realizing the learning opportunity was not intersting. 
 
-![My Image](javascript30.JPG)
-
 Português:
 
 Famoso curso de 30 dias de pequenos projetos puro código JavaScript:
@@ -25,3 +23,7 @@ Para este projeto tentei fazer eu mesmo os desafios de cada dia no arquivo index
 Na maioria dos casos eu consegui fazer eu mesmo, só assistindo o vídeo tutorial depois para verificar como o código foi feito originalmente e as diferenças do meu código.
 
 Para alguns dos projetos, decidi pular ao perceber que a oportunidade de aprendizado não era interessante.
+
+![My Image](javascript30.JPG)
+
+
