@@ -1,20 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Video Speed Scrubber</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div class="wrapper">
-    <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" loop controls></video>
+    <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" loop
+      controls></video>
     <div class="speed">
-      <div class="speed-bar">1×</div>
+      <div class="speed-bar" onmouseover="changeSpeed()" onmouseout="backValue()">1×</div>
     </div>
   </div>
 
-<script>
-</script>
+  <script>
+
+
+/*
+
+Exercicio:
+Alterar a imagem da barra e fazer video rodar na velocidade conforme alterando com o scroll
+
+*/
+
+
+    let player = document.querySelector(".flex")
+    player.playbackRate = 1
+    let scrollNumber = 50
+    function changeSpeed() {
+
+      let scroll = document.querySelector(".speed")
+      scroll.classList.add("True")
+      let checked = scroll.classList.contains("True")
+      let bar = document.querySelector(".speed-bar")
+
+
+      if (checked == true) {
+        scroll.addEventListener("mousewheel", function (event) {
+
+          if (event.wheelDelta <= 0) {
+            if (scrollNumber < 100 && scrollNumber >= 0) {
+              scrollNumber += 1
+              console.log(scrollNumber)
+              console.log("up")
+              if (scrollNumber >= 90) {
+                player.playbackRate = 2
+                bar.style.height = `100%`
+                bar.innerHTML = `2X`
+
+              } else if (scrollNumber >= 80) {
+                player.playbackRate = 1.8
+                bar.style.height = `80%`
+                bar.innerHTML = `1.8X`
+              } else if (scrollNumber >= 70) {
+                player.playbackRate = 1.5
+                bar.style.height = `70%`
+                bar.innerHTML = `1.5X`
+              } else if (scrollNumber >= 50) {
+                player.playbackRate = 1
+                bar.style.height = `50%`
+                bar.innerHTML = `1X`
+              } else if (scrollNumber >= 40) {
+                player.playbackRate = 0.8
+                bar.style.height = `40%`
+                bar.innerHTML = `0.8X`
+              } else if (scrollNumber >= 30) {
+                player.playbackRate = 0.5
+                bar.style.height = `30%`
+                bar.innerHTML = `0.5X`
+              } else if (scrollNumber >= 20) {
+                player.playbackRate = 0.2
+                bar.style.height = `20%`
+                bar.innerHTML = `0.2X`
+              }
+            }
+          } else {
+            if (scrollNumber <= 100 && scrollNumber > 0) {
+              scrollNumber -= 1
+              console.log(scrollNumber)
+              console.log("down")
+              if (scrollNumber >= 90) {
+                player.playbackRate = 2
+                bar.style.height = `100%`
+                bar.innerHTML = `2X`
+
+              } else if (scrollNumber >= 80) {
+                player.playbackRate = 1.8
+                bar.style.height = `80%`
+                bar.innerHTML = `1.8X`
+              } else if (scrollNumber >= 70) {
+                player.playbackRate = 1.5
+                bar.style.height = `70%`
+                bar.innerHTML = `1.5X`
+              } else if (scrollNumber >= 50) {
+                player.playbackRate = 1
+                bar.style.height = `50%`
+                bar.innerHTML = `1X`
+              } else if (scrollNumber >= 40) {
+                player.playbackRate = 0.8
+                bar.style.height = `40%`
+                bar.innerHTML = `0.8X`
+              } else if (scrollNumber >= 30) {
+                player.playbackRate = 0.5
+                bar.style.height = `30%`
+                bar.innerHTML = `0.5X`
+              } else if (scrollNumber >= 20) {
+                player.playbackRate = 0.2
+                bar.style.height = `20%`
+                bar.innerHTML = `0.2X`
+              }
+            }
+          }
+        })
+      }
+    }
+
+    function backValue() {
+      let scroll = document.querySelector(".speed")
+      scroll.classList.remove("True")
+      let checked = scroll.classList.contains("True")
+    } 
+  </script>
 </body>
+
 </html>
