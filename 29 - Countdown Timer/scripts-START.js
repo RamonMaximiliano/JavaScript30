@@ -13,6 +13,11 @@ let seconds = 0
 
 
 
+
+//pegar minutes e seconds
+//mostrar na interface
+//diminuir conforme atualiza
+
 for (button of buttons) {
     console.log(button.dataset.time)
     button.addEventListener("click", setTime)
@@ -27,19 +32,12 @@ function setTime(e) {
         timeOut = 20
     }
 
-
-
     console.log(timeOut)
-
     document.querySelector(".display__time-left").innerHTML = `${timeOut}`
-
 }
 
 
 
-//pegar minutes e seconds
-//mostrar na interface
-//diminuir conforme atualiza
 
 
 //SHOW WHEN COMES BACK
@@ -73,7 +71,37 @@ function setBack(event) {
         backSeconds += timeOut
     }
 
-    console.log(`Be back at: ${backHour}:${backMinutes}:${backSeconds}`);
     document.querySelector(".display__end-time").innerHTML = `Be back at: ${backHour}:${backMinutes}`
 }
 //SHOW WHEN COMES BACK
+
+
+//PEGANDO DO MANUAL INPUT DE MINUTES  
+document.getElementById("custom").addEventListener("submit", manualMin)
+function manualMin(event) {
+    event.preventDefault()
+    const date = new Date();
+    let backHour = date.getHours()
+    console.log(backHour)
+    let backMinutes = date.getMinutes()
+    console.log(backMinutes)
+
+    let manualValue = Number(document.getElementById("inputManual").value)
+/*     if(manualValue > 0){
+        window.alert("More than 60 minutes is not allowed!")
+    }
+ */
+    if (manualValue + backMinutes < 60) {
+        document.querySelector(".display__end-time").innerHTML = `Be back at: ${backHour}:${manualValue + backMinutes}`
+    } else if (manualValue + backMinutes >= 60) {
+        let endMin = 0
+        if((manualValue + backMinutes) - 60 >= 60){
+            backHour +=1
+            endMin = (manualValue + backMinutes)%60 
+        } else {
+            endMin = (manualValue + backMinutes) - 60
+        }
+        document.querySelector(".display__end-time").innerHTML = `Be back at: ${backHour + 1}:${endMin}`
+    }
+}
+//PEGANDO DO MANUAL INPUT DE MINUTES
